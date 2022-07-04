@@ -1,0 +1,22 @@
+`include "core_defines.v"
+
+//产生新的pc值，并读取指令存储器
+module ifu(
+	input clk,
+	input rst_n,
+	input [`CPU_INSTR_SIZE-1:0]pc_if_i,
+	output [`CPU_INSTR_SIZE-1:0]pc_if_o,
+	output [7:0]rom_addr
+
+    );
+
+	pc_reg pc_reg_inst (
+    .clk(clk), 
+    .rst_n(rst_n), 
+    .pc_new(pc_if_i), 
+    .pc_out(pc_if_o)
+    );
+	
+	assign rom_addr=pc_if_o[9:2];
+
+endmodule

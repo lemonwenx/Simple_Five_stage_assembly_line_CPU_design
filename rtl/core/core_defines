@@ -1,0 +1,3 @@
+//core_defines
+
+`define CPU_INSTR_SIZE  32
